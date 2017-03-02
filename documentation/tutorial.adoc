@@ -292,7 +292,7 @@ Also, let us get a reference to the [classname]#CustomerService#.
 public class MyUI extends UI {
     // Add the next two lines:
     private CustomerService service = CustomerService.getInstance();
-    private Grid<Customer> grid = new Grid<>();
+    private Grid<Customer> grid = new Grid<>(Customer.class);
 
     // The rest is already there...
     @Override
@@ -450,7 +450,7 @@ to the init method, for example right after your _filterText_ configuration:
 
 [source,java]
 ----
-Button clearFilterTextBtn = new Button(FontAwesome.TIMES);
+Button clearFilterTextBtn = new Button("Clear");
 clearFilterTextBtn.setDescription("Clear the current filter");
 clearFilterTextBtn.addClickListener(e -> filterText.clear());
 ----
@@ -483,7 +483,7 @@ application.
 
 [source,java]
 ----
-    layout.addComponents(filtering, grid);
+    layout.addComponents(filtering, clearFilterTextBtn, grid);
 ----
 
 Now it is a good place to save your changes and try them in your browser.
